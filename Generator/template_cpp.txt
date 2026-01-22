@@ -1,0 +1,76 @@
+//Generated From Template
+
+#include "{{MACHINE_NAME}}.h"
+
+// Constructor
+{{MACHINE_NAME}}::{{MACHINE_NAME}}()
+{
+    m_eState = {{MACHINE_NAME_LOWER}}::eState::STATE_START;
+    m_eCommand = {{MACHINE_NAME_LOWER}}::COMMAND_NONE;
+
+    m_pRobotIO = nullptr;
+}
+
+void {{MACHINE_NAME}}::Initialize( RobotIO *p_pRobotIO )
+{
+    m_pRobotIO = p_pRobotIO;
+
+    m_pTimeoutTimer = new frc::Timer();
+    m_pTimeoutTimer->Reset();
+
+    //TODO - Refresh Motor Configs if necessary
+}
+
+void {{MACHINE_NAME}}::UpdateInputStatus()
+{
+
+}
+
+void {{MACHINE_NAME}}::Execute()
+{
+    //Check if m_pRobotIO has been assigned
+    if(m_pRobotIO != nullptr)
+    {
+        // ***************
+        // * Start State *
+        // ***************
+        if(m_eState == {{MACHINE_NAME_LOWER}}::eState::STATE_START)
+        {
+            m_eState = {{MACHINE_NAME_LOWER}}::eState::STATE_IDLE;
+        }
+
+        // **************
+        // * Idle State *
+        // **************
+        if(m_eState == {{MACHINE_NAME_LOWER}}::eState::STATE_IDLE)
+        {
+
+            //TODO - Add your command processing here
+
+
+
+            // Error - unrecognized command
+            else if(m_eCommand != {{MACHINE_NAME_LOWER}}::COMMAND_NONE && m_eCommand != {{MACHINE_NAME_LOWER}}::COMMAND_STOP)
+            {
+                printf("ERROR in {{MACHINE_NAME}}.cpp - Unknown command\n");
+            }
+        }
+
+        //TODO - Add your state processing here
+
+
+
+
+        // Handle Error State or unknown state
+        else
+        {
+            // Error Logic Here if needed
+            printf("ERROR in {{MACHINE_NAME}}.cpp - Error or unknown state\n");
+        }
+    }
+    else
+    {
+        // Handle RobotIO nullptr error
+        printf("ERROR in {{MACHINE_NAME}}.cpp - Robot IO Pointer Null\n");
+    }
+}

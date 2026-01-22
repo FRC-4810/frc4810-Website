@@ -1,0 +1,79 @@
+//Generated From Template
+
+
+#pragma once
+
+#include <frc/Timer.h>
+
+#include "RobotIO.h"
+
+namespace {{MACHINE_NAME_LOWER}}
+{
+    enum eState
+    {
+        STATE_START = 0,
+        STATE_IDLE = 1,
+        
+        //TODO - Add your states here
+
+        STATE_ERROR = 99
+    };
+
+    enum eCommand
+    {
+        COMMAND_NONE,
+        
+        //TODO - Add your commands here
+
+        COMMAND_STOP
+    };
+
+    //TODO - Timeout Constants
+
+    //TODO - Motor Speed Constants
+    
+    //TODO - Setpoint Constants
+    
+}
+
+class {{MACHINE_NAME}}
+{
+public:
+
+    // Constructor/Destructor
+    {{MACHINE_NAME}}();
+    ~{{MACHINE_NAME}}()
+        {  }
+
+    // Accessor Methods
+
+    //-TODO - Add your Set Accessor Methods
+
+    inline void Stop()
+        {  m_eCommand = {{MACHINE_NAME_LOWER}}::COMMAND_STOP;  }
+
+
+
+
+    inline bool IsIdle()
+        { return(m_eState == {{MACHINE_NAME_LOWER}}::eState::STATE_IDLE); }
+
+    //TODO - Add your Get Accessor Methods
+
+
+
+    // Class Methods
+    void Initialize( RobotIO *p_pRobotIO );
+    void Execute();
+    void UpdateInputStatus();
+    
+private:
+    {{MACHINE_NAME_LOWER}}::eState m_eState;
+    {{MACHINE_NAME_LOWER}}::eCommand m_eCommand;
+
+    RobotIO *m_pRobotIO;
+
+    frc::Timer *m_pTimeoutTimer;
+
+    //TODO - Add Motor Configs if needed
+};

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>State Machine Generator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1f2933, #111827);
+            color: #e5e7eb;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .card {
+            background: #1f2933;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            width: 360px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 1.25rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.65rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #374151;
+            background: #111827;
+            color: #e5e7eb;
+            font-size: 0.95rem;
+        }
+
+        input::placeholder {
+            color: #6b7280;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 1px #3b82f6;
+        }
+
+        button {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background: #3b82f6;
+            color: white;
+            transition: background 0.15s ease, transform 0.1s ease;
+        }
+
+        button:hover:not(:disabled) {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            background: #374151;
+            color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>State Machine Generator</h2>
+
+    <p>Insert State Machine Name<br>(Capitalized, no spaces)</p>
+
+    <input id="nameInput" placeholder="" />
+
+    <button id="generateBtn" disabled>
+        Generate .h and .cpp
+    </button>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    const nameInput = document.getElementById("nameInput");
+    const generateBtn = document.getElementById("generateBtn");
+
+    function isValidName(name) {
+        // Capitalized, no spaces: letters only, starts with capital
+        return /^[A-Z][A-Za-z0-9]*$/.test(name);
+    }
+
+    nameInput.addEventListener("input", () => {
+        generateBtn.disabled = !isValidName(nameInput.value.trim());
+    });
+</script>
+
+</body>
+</html>
