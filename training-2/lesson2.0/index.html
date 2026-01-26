@@ -28,7 +28,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         h1 {
@@ -43,55 +43,20 @@
             font-size: 1rem;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: #020617;
+        /* 🎥 Video player styling */
+        .video-wrapper {
+            margin: 2rem 0 3rem;
+            border-radius: 16px;
+            overflow: hidden;
             border: 1px solid #1e293b;
-            border-radius: 14px;
-            padding: 1.75rem;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+            background: #020617;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: #3b82f6;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.45);
-        }
-
-        .card h2 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .card p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #9ca3af;
-            line-height: 1.4;
-        }
-
-        .card.generator {
-            border-color: #2563eb;
-            background: linear-gradient(135deg, #020617, #020617 60%, #1e3a8a);
-        }
-
-        .card.github {
-            border-color: #a925eb;
-            background: linear-gradient(135deg, #020617, #020617 60%, #641e8a);
-        }
-
-        .card.website {
-            border-color: #25ebe5;
-            background: linear-gradient(135deg, #020617, #020617 60%, #1e6a8a);
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         footer {
@@ -111,10 +76,19 @@
         <p>An overview of what you need to download for Robot Code, and the outline of Robot Code.</p>
     </header>
 
-
+    <!-- 🎥 Video Player -->
+    <div class="video-wrapper">
+        <video controls preload="metadata">
+            <source src="Lesson2.0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
     <footer>
         © FRC Team 4810
     </footer>
 
 </div>
+
+</body>
+</html>
